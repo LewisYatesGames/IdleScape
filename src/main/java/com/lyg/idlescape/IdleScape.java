@@ -3,6 +3,9 @@ package com.lyg.idlescape;
 public class IdleScape {
 
     public static void main(String[] args) {
+        TickSystem tickSystem = new TickSystem();
+        tickSystem.start();
+
         Player player = new Player();
 
         player.addSkillExp(SkillType.WOODCUTTING, 13034431);
