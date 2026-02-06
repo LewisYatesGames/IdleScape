@@ -1,5 +1,6 @@
 package com.lyg.idlescape;
 
+import com.lyg.idlescape.server.skill.SkillProgress;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

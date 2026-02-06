@@ -1,4 +1,4 @@
-package com.lyg.idlescape;
+package com.lyg.idlescape.server.skill;
 
 public class SkillProgress {
 

@@ -1,4 +1,7 @@
-package com.lyg.idlescape;
+package com.lyg.idlescape.server.player;
+
+import com.lyg.idlescape.server.skill.SkillProgress;
+import com.lyg.idlescape.server.skill.SkillType;
 
 import java.util.EnumMap;
 import java.util.Map;

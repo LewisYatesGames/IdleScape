@@ -1,4 +1,4 @@
-package com.lyg.idlescape;
+package com.lyg.idlescape.server.tick;
 
 public class TickSystem implements Runnable {
     private Thread thread;

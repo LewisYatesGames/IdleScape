@@ -1,5 +1,9 @@
 package com.lyg.idlescape;
 
+import com.lyg.idlescape.server.player.Player;
+import com.lyg.idlescape.server.skill.SkillType;
+import com.lyg.idlescape.server.tick.TickSystem;
+
 public class IdleScape {
 
     public static void main(String[] args) {
