@@ -28,7 +28,7 @@ public class TickSystem implements Runnable {
     }
 
     public void start() {
-        if(thread != null && thread.isAlive() && Thread.currentThread() != thread){
+        if (thread != null && thread.isAlive() && Thread.currentThread() != thread) {
             stop();
         }
 
@@ -39,7 +39,7 @@ public class TickSystem implements Runnable {
         System.out.println("Tick System started");
     }
 
-    private void resetState(){
+    private void resetState() {
         accumulatedTime = 0;
         lastTime = System.currentTimeMillis();
         tick = 0;
@@ -58,14 +58,14 @@ public class TickSystem implements Runnable {
 
     @Override
     public void run() {
-        while(isRunning) {
+        while (isRunning) {
             var currentTime = System.currentTimeMillis();
             var deltaTime = currentTime - lastTime;
             lastTime = currentTime;
 
             accumulatedTime += deltaTime;
 
-            while(accumulatedTime >= TICK_DURATION){
+            while (accumulatedTime >= TICK_DURATION) {
                 accumulatedTime -= TICK_DURATION;
                 tick++;
                 for (Tickable tickable : tickables) {
@@ -73,10 +73,10 @@ public class TickSystem implements Runnable {
                 }
                 System.out.println(tick);
             }
-            try{
+            try {
                 var sleep = Math.clamp(TICK_DURATION - accumulatedTime, 1, TICK_DURATION);
                 Thread.sleep(sleep);
-            }catch (InterruptedException e){
+            } catch (InterruptedException e) {
                 break;
             }
         }
