@@ -1,5 +1,10 @@
 package com.lyg.idlescape.server.tick;
 
+import com.lyg.idlescape.server.util.Tickable;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class TickSystem implements Runnable {
     private Thread thread;
     private volatile boolean isRunning;
@@ -8,6 +13,19 @@ public class TickSystem implements Runnable {
     private long accumulatedTime;
     private long lastTime;
     private int tick;
+    List<Tickable> tickables;
+
+    public TickSystem() {
+        tickables = new ArrayList<>();
+    }
+
+    public void registerTickable(Tickable tickable) {
+        tickables.add(tickable);
+    }
+
+    public void deRegisterTickable(Tickable tickable) {
+        tickables.remove(tickable);
+    }
 
     public void start() {
         if(thread != null && thread.isAlive() && Thread.currentThread() != thread){
@@ -50,6 +68,9 @@ public class TickSystem implements Runnable {
             while(accumulatedTime >= TICK_DURATION){
                 accumulatedTime -= TICK_DURATION;
                 tick++;
+                for (Tickable tickable : tickables) {
+                    tickable.tick();
+                }
                 System.out.println(tick);
             }
             try{
