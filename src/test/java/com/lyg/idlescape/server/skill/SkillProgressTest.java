@@ -1,4 +1,4 @@
-package com.lyg.idlescape;
+package com.lyg.idlescape.server.skill;
 
 import com.lyg.idlescape.server.skill.SkillProgress;
 import org.junit.jupiter.api.Assertions;
