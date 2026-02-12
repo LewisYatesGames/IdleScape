@@ -1,12 +1,10 @@
 package com.lyg.idlescape.server.skill;
 
-import com.lyg.idlescape.server.skill.SkillProgress;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class SkillProgressTest {
-
     @ParameterizedTest
     @CsvSource({
             "13034431, 99",
@@ -20,5 +18,4 @@ class SkillProgressTest {
         var skill = new SkillProgress(xp);
         Assertions.assertEquals(expectedLevel, skill.getSkillLevel());
     }
-
 }
