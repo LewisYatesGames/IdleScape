@@ -1,5 +1,7 @@
 package com.lyg.idlescape.server.skill;
 
+import com.lyg.idlescape.server.skill.effect.Effect;
+
 import java.util.List;
 
 public abstract class SkillAction {

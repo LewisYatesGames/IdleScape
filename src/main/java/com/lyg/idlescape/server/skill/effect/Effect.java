@@ -1,4 +1,4 @@
-package com.lyg.idlescape.server.skill;
+package com.lyg.idlescape.server.skill.effect;
 
 import com.lyg.idlescape.server.player.Player;
 

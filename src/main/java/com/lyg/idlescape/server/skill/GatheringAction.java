@@ -1,5 +1,8 @@
 package com.lyg.idlescape.server.skill;
 
+import com.lyg.idlescape.server.skill.effect.Effect;
+import com.lyg.idlescape.server.skill.effect.XpRewardEffect;
+
 import java.util.List;
 
 public class GatheringAction extends SkillAction {
