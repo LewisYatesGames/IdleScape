@@ -7,10 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class World implements Tickable {
-    List<Player> players;
+    private final List<Player> players;
 
-    public World() {
+    private final GameContext context;
+
+    public World(GameContext context) {
         players = new ArrayList<>();
+        this.context = context;
     }
 
     public void registerPlayer(Player player) {
@@ -23,7 +26,7 @@ public class World implements Tickable {
 
     public void tick() {
         for (Player player : players) {
-            player.update();
+            player.update(context);
         }
     }
 }

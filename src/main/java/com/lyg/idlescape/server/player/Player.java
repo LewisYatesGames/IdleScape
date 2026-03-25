@@ -4,6 +4,7 @@ import com.lyg.idlescape.server.skill.effect.Effect;
 import com.lyg.idlescape.server.skill.SkillAction;
 import com.lyg.idlescape.server.skill.SkillProgress;
 import com.lyg.idlescape.server.skill.SkillType;
+import com.lyg.idlescape.server.world.GameContext;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -13,14 +14,14 @@ public class Player {
 
     private SkillAction skillAction;
 
-    public void update() {
+    public void update(GameContext context) {
         if (skillAction == null)
             return;
 
         var effects = skillAction.update();
 
         for (Effect effect : effects) {
-            effect.apply(this);
+            effect.apply(this, context);
         }
 
         if (skillAction.isComplete()) {
