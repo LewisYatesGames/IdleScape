@@ -10,8 +10,8 @@ import java.util.List;
 public class GatheringAction extends SkillAction {
     private final ItemEntry[] itemRewards;
 
-    public GatheringAction(SkillType type, int level, int duration, int xpReward, ItemEntry[] itemRewards, boolean repeatable) {
-        super(type, level, duration, xpReward, repeatable);
+    public GatheringAction(String actionId, SkillType type, int level, int duration, int xpReward, ItemEntry[] itemRewards, boolean repeatable) {
+        super(actionId, type, level, duration, xpReward, repeatable);
         this.itemRewards = itemRewards;
     }
 
