@@ -25,7 +25,7 @@ public class Player {
         }
 
         if (skillAction.isComplete()) {
-            if (!skillAction.repeatable) {
+            if (!skillAction.isRepeatable()) {
                 skillAction = null;
             } else {
                 skillAction.start();
@@ -35,7 +35,7 @@ public class Player {
 
     public void setSkillAction(SkillAction skillAction) {
         this.skillAction = null;
-        if (getSkillLevel(skillAction.skillType) < skillAction.requiredLevel) {
+        if (getSkillLevel(skillAction.getSkillType()) < skillAction.getRequiredLevel()) {
             return;
         }
 

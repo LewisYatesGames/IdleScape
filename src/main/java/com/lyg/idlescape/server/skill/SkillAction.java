@@ -5,13 +5,13 @@ import com.lyg.idlescape.server.skill.effect.Effect;
 import java.util.List;
 
 public abstract class SkillAction {
-    public final SkillType skillType;
-    public final int requiredLevel;
-    public final int duration;
-    public final int xpReward;
-    public final boolean repeatable;
+    private final SkillType skillType;
+    private final int requiredLevel;
+    private final int duration;
+    private final int xpReward;
+    private final boolean repeatable;
 
-    protected int tick = 0;
+    private int tick = 0;
 
     public SkillAction(SkillType type, int level, int duration, int xpReward, boolean repeatable) {
         this.skillType = type;
@@ -37,4 +37,28 @@ public abstract class SkillAction {
 
     protected abstract void onStart();
     protected abstract List<Effect> onUpdate();
+
+    public SkillType getSkillType() {
+        return skillType;
+    }
+
+    public int getRequiredLevel() {
+        return requiredLevel;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public int getXpReward() {
+        return xpReward;
+    }
+
+    public boolean isRepeatable() {
+        return repeatable;
+    }
+
+    public int getTick() {
+        return tick;
+    }
 }

@@ -22,7 +22,7 @@ public class GatheringAction extends SkillAction {
     public List<Effect> onUpdate() {
         if (isComplete()) {
             return List.of(
-                    new XpRewardEffect(skillType, xpReward),
+                    new XpRewardEffect(getSkillType(), getXpReward()),
                     new ItemRewardEffect(itemRewards)
             );
         }
