@@ -18,23 +18,23 @@ public class SharedInventory {
     private final Map<String, Integer> inventory = new HashMap<>();
 
     public boolean addItem(ItemEntry query) {
-        if (query.quantity <= 0) {
+        if (query.quantity() <= 0) {
             return false;
         }
 
-        var newQuantity = query.quantity;
+        var newQuantity = query.quantity();
 
-        if (inventory.containsKey(query.itemID)) {
-            newQuantity += inventory.get(query.itemID);
+        if (inventory.containsKey(query.itemID())) {
+            newQuantity += inventory.get(query.itemID());
         }
 
-        inventory.put(query.itemID, newQuantity);
+        inventory.put(query.itemID(), newQuantity);
         return true;
     }
 
     public boolean addItems(ItemEntry[] queries) {
         for (var query : queries) {
-            if (query.quantity <= 0) {
+            if (query.quantity() <= 0) {
                 return false;
             }
         }
@@ -47,21 +47,21 @@ public class SharedInventory {
     }
 
     public boolean removeItem(ItemEntry query) {
-        if(query.quantity <= 0) {
+        if(query.quantity() <= 0) {
             return false;
         }
 
         var newQuantity = 0;
-        if (inventory.containsKey(query.itemID) && inventory.get(query.itemID) - query.quantity >= 0) {
-            newQuantity = inventory.get(query.itemID) - query.quantity;
+        if (inventory.containsKey(query.itemID()) && inventory.get(query.itemID()) - query.quantity() >= 0) {
+            newQuantity = inventory.get(query.itemID()) - query.quantity();
         } else {
             return false;
         }
 
         if(newQuantity <= 0){
-            inventory.remove(query.itemID);
+            inventory.remove(query.itemID());
         } else {
-            inventory.put(query.itemID, newQuantity);
+            inventory.put(query.itemID(), newQuantity);
         }
 
         return true;
@@ -70,12 +70,12 @@ public class SharedInventory {
     public boolean removeItems(ItemEntry[] queries) {
         int[] updatedQuantities = new int[queries.length];
         for (var i = 0; i < queries.length; i++) {
-            if(queries[i].quantity <= 0) {
+            if(queries[i].quantity() <= 0) {
                 return false;
             }
 
-            if (inventory.containsKey(queries[i].itemID) && inventory.get(queries[i].itemID) - queries[i].quantity >= 0) {
-                updatedQuantities[i] = inventory.get(queries[i].itemID) - queries[i].quantity;
+            if (inventory.containsKey(queries[i].itemID()) && inventory.get(queries[i].itemID()) - queries[i].quantity() >= 0) {
+                updatedQuantities[i] = inventory.get(queries[i].itemID()) - queries[i].quantity();
             } else {
                 return false;
             }
@@ -83,9 +83,9 @@ public class SharedInventory {
 
         for (var i = 0; i < queries.length; i++) {
             if(updatedQuantities[i] <= 0){
-                inventory.remove(queries[i].itemID);
+                inventory.remove(queries[i].itemID());
             } else {
-                inventory.put(queries[i].itemID, updatedQuantities[i]);
+                inventory.put(queries[i].itemID(), updatedQuantities[i]);
             }
         }
         return true;
@@ -95,7 +95,7 @@ public class SharedInventory {
         return inventory.getOrDefault(itemID, 0);
     }
     public int getItemQuantity(ItemEntry query) {
-        return inventory.getOrDefault(query.itemID, 0);
+        return inventory.getOrDefault(query.itemID(), 0);
     }
 
     public List<Integer> getItemQuantities(String[] itemIDs) {
@@ -109,7 +109,7 @@ public class SharedInventory {
     public List<Integer> getItemQuantities(ItemEntry[] entries) {
         List<Integer> itemQuantities = new ArrayList<>();
         for (var query : entries) {
-            itemQuantities.add(getItemQuantity(query.itemID));
+            itemQuantities.add(getItemQuantity(query.itemID()));
         }
 
         return itemQuantities;

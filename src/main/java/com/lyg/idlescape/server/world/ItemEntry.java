@@ -1,11 +1,13 @@
 package com.lyg.idlescape.server.world;
 
-public class ItemEntry {
-    final String itemID;
-    final int quantity;
+public record ItemEntry(String itemID, int quantity) {
 
-    public ItemEntry(String itemID, int quantity) {
-        this.itemID = itemID;
-        this.quantity = quantity;
+    public ItemEntry {
+        if (itemID == null || itemID.isBlank()) {
+            throw new IllegalArgumentException("itemID cannot be empty");
+        }
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("Item quantity cannot be less than 1: " + itemID);
+        }
     }
 }
