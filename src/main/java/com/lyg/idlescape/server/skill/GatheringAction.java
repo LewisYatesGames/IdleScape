@@ -1,5 +1,6 @@
 package com.lyg.idlescape.server.skill;
 
+import com.lyg.idlescape.server.skill.action.validation.ActionValidationService;
 import com.lyg.idlescape.server.skill.effect.Effect;
 import com.lyg.idlescape.server.skill.effect.ItemRewardEffect;
 import com.lyg.idlescape.server.skill.effect.XpRewardEffect;
@@ -16,7 +17,13 @@ public class GatheringAction extends SkillAction {
     }
 
     @Override
-    protected void onStart() { }
+    public void validate(ActionValidationService service) {
+        service.validateItemEntries(itemRewards);
+    }
+
+    @Override
+    protected void onStart() {
+    }
 
     @Override
     public List<Effect> onUpdate() {

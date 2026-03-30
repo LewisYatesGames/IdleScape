@@ -1,5 +1,6 @@
 package com.lyg.idlescape.server.skill;
 
+import com.lyg.idlescape.server.skill.action.validation.ActionValidationService;
 import com.lyg.idlescape.server.skill.effect.Effect;
 
 import java.util.List;
@@ -39,6 +40,8 @@ public abstract class SkillAction {
     public boolean isComplete() {
         return tick >= duration;
     }
+
+    public abstract void validate(ActionValidationService service);
 
     protected abstract void onStart();
     protected abstract List<Effect> onUpdate();
